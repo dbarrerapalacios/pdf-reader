@@ -22,7 +22,7 @@ _Clone o descargue el proyecto_
 
 ## Autores ✒️
 
-* **Daniel BArrera** - *Trabajo Inicial* - [dbarrerapalacios](https://github.com/dbarrerapalacios)
+* **Daniel Barrera** - [dbarrerapalacios](https://github.com/dbarrerapalacios)
 
 ## Licencia 📄
 
