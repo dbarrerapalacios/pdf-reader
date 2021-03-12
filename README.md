@@ -1,6 +1,8 @@
 # PDF READER
 _Un pequeño proyectito con el cual se puede convertir un pdf a texto y luego el navegador lo reproduce con su sintetizador de voz_
 
+_[DEMO](https://dbarrerapalacios.github.io/pdf-reader/)_
+
 ### Pre-requisitos 📋
 
 _Contar con internet y un navegador actual_
@@ -16,7 +18,7 @@ _Clone o descargue el proyecto_
 
 * [Bootstrap5](https://getbootstrap.com) - Framework css
 * [PDFjs](https://mozilla.github.io/pdf.js/) - Lector de pdf
-* [Fontawesome](https://fontawesome.com - Iconos
+* [Fontawesome](https://fontawesome.com) - Iconos
 
 ## Autores ✒️
 
