@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/css/style.css" />
-    <title>color claro u oscuro</title>
+    <title>Lector de PDF</title>
   </head>
   <body>
     <div class="container">
-      <input type="file" id="libro" accept=".pdf" />
-      <button id="hablar">Leer PDF</button>
+      <input type="file" id="archivo" accept=".pdf" />
+      <label for="archivo" class="simple-btn">Buscar Archivo</label>
+      <span id="nombre-archivo">No hay archiovo seleccionado</span>
+      <div>
+        <button id="reproducir">Reproducir</button>
+        <button id="pausar">Pausar</button>
+        <button id="reiniciar">Reiniciar</button>
+      </div>
     </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js"
