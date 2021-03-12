@@ -1,16 +1,27 @@
 const nombreArchivo = document.getElementById("nombre-archivo");
 var audio = new SpeechSynthesisUtterance();
 var synth = window.speechSynthesis;
+var lectura = [];
+var posicionActual = 0;
+var pausado = false;
 
 document.getElementById("archivo").addEventListener("change", function () {
   if (validar(this.files)) {
     leerPdf(this.files, (texto) => {
-      leerTexto(texto);
+      if (texto.length === 0) {
+        nombreArchivo.textContent = "No se encontro texto en el archivo";
+      } else {
+        document.getElementById("barra-progreso").style.width = `0%`;
+        document.getElementById("lectura").innerHTML = "";
+        posicionActual = 0;
+        lectura = texto.split(" ");
+      }
+      // leerTexto(texto);
     });
   }
 });
 document.getElementById("reproducir").addEventListener("click", function () {
-  reproducir();
+  iniciarReproduccion();
 });
 document.getElementById("pausar").addEventListener("click", function () {
   pausar();
@@ -34,26 +45,52 @@ const validar = (files) => {
   nombreArchivo.textContent = files[0].name;
   return true;
 };
-const leerTexto = (texto) => {
-  console.log(texto);
-  if (texto.length > 0) {
-    audio.text = texto;
-  } else {
-    nombreArchivo.textContent = "No se encontro texto en el archivo";
+// const leerTexto = (texto) => {
+//   console.log(texto);
+//   if (texto.length > 0) {
+//     audio.text = texto;
+//   } else {
+//     nombreArchivo.textContent = "No se encontro texto en el archivo";
+//   }
+// };
+
+const iniciarReproduccion = () => {
+  if (lectura.length > 0) {
+    pausado = false;
+    reproducir(posicionActual);
   }
 };
 
-const reproducir = () => {
-  if (!synth.pending && !synth.speaking) {
-    console.log("reprocuir");
-    synth.speak(audio);
-  }
+const reproducir = (posicion = 0) => {
+  document.getElementById("barra-progreso").style.width = `${
+    posicion / lectura.length
+  }%`;
+  document.getElementById("lectura").innerHTML += " " + lectura[posicion];
+  document.getElementById("lectura").scrollTop = document.getElementById(
+    "lectura"
+  ).scrollHeight;
+  audio.text = lectura[posicion];
+  posicionActual = posicion;
+  synth.speak(audio);
+
+  audio.onend = () => {
+    synth.cancel();
+    if (!pausado) {
+      reproducir(posicion + 1);
+    }
+  };
 };
 
 const pausar = () => {
-  synth.pause();
+  synth.cancel();
+  pausado = true;
+  posicionActual++;
 };
 const reiniciar = () => {
+  posicionActual = 0;
+  document.getElementById("barra-progreso").style.width = `0%`;
+  document.getElementById("lectura").innerHTML = "";
+  pausado = true;
   synth.cancel();
 };
 

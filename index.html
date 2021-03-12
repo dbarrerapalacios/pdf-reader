@@ -4,25 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/css/font-awesome.min.css" />
     <link rel="stylesheet" href="src/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
     <title>Lector de PDF</title>
   </head>
   <body>
     <div class="container">
-      <input type="file" id="archivo" accept=".pdf" />
-      <label for="archivo" class="simple-btn">Buscar Archivo</label>
-      <span id="nombre-archivo">No hay archiovo seleccionado</span>
-      <div>
-        <button id="reproducir">Reproducir</button>
-        <button id="pausar">Pausar</button>
-        <button id="reiniciar">Reiniciar</button>
+      <div class="row d-flex align-items-center min-vh-100">
+        <div class="col-12 col-sm-7 col-md-6 col-lg-5">
+          <h1 class="card-title">Lector de PDF</h1>
+          <input type="file" id="archivo" accept=".pdf" />
+          <label for="archivo" class="btn btn-light">Buscar Archivo</label>
+          <div id="nombre-archivo" class="py-3">
+            No hay archivo seleccionado
+          </div>
+
+          <div class="pb-4">
+            <button id="reproducir" class="btn btn-outline-light">
+              <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            <button id="pausar" class="btn btn-outline-light mx-2">
+              <i class="fa fa-pause" aria-hidden="true"></i>
+            </button>
+            <button id="reiniciar" class="btn btn-outline-light">
+              <i class="fa fa-stop" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="pb-4">
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped bg-warning"
+                role="progressbar"
+                style="width: 0%"
+                id="barra-progreso"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div id="lectura">
+
+          </div>
+        </div>
+        <div
+          class="col-sm-5 col-md-6 col-lg-7 d-none d-sm-none d-md-block d-lg-block"
+        >
+          <img src="src/img/undraw_mathematics_4otb.svg" class="img-fluid" />
+        </div>
       </div>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js"
       integrity="sha512-g4FwCPWM/fZB1Eie86ZwKjOP+yBIxSBM/b2gQAiSVqCgkyvZ0XxYPDEcN2qqaKKEvK6a05+IPL1raO96RrhYDQ=="
       crossorigin="anonymous"
     ></script>
-    <script src="src/js/pruebas.js"></script>
+    <script src="src/js/lector.js"></script>
   </body>
 </html>
